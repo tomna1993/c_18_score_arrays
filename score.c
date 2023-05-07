@@ -4,13 +4,11 @@
 int main(void)
 {
 	int scores[3];
-	int n = 0;
 
 	//Get three numbers from user
-	while(n < 3)
+	for(int i = 0; i < 3; i++)
 	{
-		scores[n] = get_int("Score%i: ", n);
-		n++;
+		scores[i] = get_int("Score%i: ", i);
 	}
 
 	//Print the average of the three given score
