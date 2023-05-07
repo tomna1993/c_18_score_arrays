@@ -1,18 +1,33 @@
 #include <cs50.h>
 #include <stdio.h>
 
+//Create a global variable to set how many scores we want to average
+const int score_count = 5;
+
+float average(int userScores[], int length);
+
 int main(void)
 {
-	int scores[3];
-	int n = 0;
+	int scores[score_count];
 
 	//Get three numbers from user
-	while(n < 3)
+	for(int i = 0; i < score_count; i++)
 	{
-		scores[n] = get_int("Score%i: ", n);
-		n++;
+		scores[i] = get_int("Score%i: ", i);
 	}
 
 	//Print the average of the three given score
-	printf("Average score: %f\n", (scores[0] + scores[1] + scores[2]) / 3.0);
+	printf("Average score: %f\n", average(scores, score_count));
+}
+
+float average(int userScores[], int length)
+{
+	int sum = 0;
+
+	for(int i = 0; i < length; i++)
+	{
+		sum += userScores[i];
+	}
+
+	return sum / (float) length;
 }
